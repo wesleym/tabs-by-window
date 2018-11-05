@@ -1,0 +1,33 @@
+{
+  "name": "tabs-by-window",
+  "version": "1.0.0",
+  "description": "Tabs by Window is a Chrome Extension that organizes tabs into a tree that shows which window a tab is in and relationships between tabs.",
+  "main": "popup.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesleym/tabs-by-window"
+  },
+  "keywords": [
+    "chrome",
+    "tab",
+    "tabs",
+    "window",
+    "windows",
+    "manage",
+    "close",
+    "tree"
+  ],
+  "author": "Wesley Moy",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/chrome": "0.0.75",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "gulp-zip": "^4.2.0",
+    "typescript": "^3.1.6"
+  }
+}

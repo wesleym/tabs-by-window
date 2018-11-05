@@ -1,0 +1,7 @@
+{
+	"files": ["src/popup.ts"],
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"target": "es6"
+	}
+}
