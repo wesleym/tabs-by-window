@@ -12,42 +12,45 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const gulp = require('gulp');
+const { series, parallel, src, dest } = require('gulp');
 const zip = require('gulp-zip');
 const del = require('del');
 const ts = require('gulp-typescript');
+
 const tsProject = ts.createProject('tsconfig.json');
 const paths = {
   static: ['static/*'],
-  tango: [,
+  tango: [
     'third_party/tango-icon-theme-0.8.90/22x22/actions/list-remove.png',
     'third_party/tango-icon-theme-0.8.90/22x22/apps/preferences-system-windows.png'
   ]
 };
 
-gulp.task('clean', function () {
+function clean() {
   return del(['dist/**', '!dist']);
-});
+}
 
-gulp.task('typescript', function () {
+function typescript() {
   return tsProject.src()
       .pipe(tsProject())
       .js
-      .pipe(gulp.dest('dist/tabs-by-window'));
-});
+      .pipe(dest('dist/tabs-by-window'));
+}
 
-gulp.task('static', function () {
-  return gulp.src(paths.static)
-      .pipe(gulp.dest('dist/tabs-by-window'));
-});
+function staticTask() {
+  return src(paths.static)
+      .pipe(dest('dist/tabs-by-window'));
+}
 
-gulp.task('icons', function () {
-  return gulp.src(paths.tango)
-    .pipe(gulp.dest('dist/tabs-by-window'));
-});
+function icons() {
+  return src(paths.tango)
+    .pipe(dest('dist/tabs-by-window'));
+}
 
-gulp.task('default', ['typescript', 'static', 'icons'], function () {
-  return gulp.src('dist/tabs-by-window/*')
+function defaultTask() {
+  return src('dist/tabs-by-window/*')
       .pipe(zip('tabs-by-window.zip'))
-      .pipe(gulp.dest('dist'));
-});
+      .pipe(dest('dist'));
+}
+
+exports.default = series(parallel(typescript, staticTask, icons), defaultTask)
