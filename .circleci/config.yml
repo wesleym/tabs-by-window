@@ -48,6 +48,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: yarn test
+      # TODO(wesleym): Reenable this when tests are added
+      # - run: yarn test
 
 
