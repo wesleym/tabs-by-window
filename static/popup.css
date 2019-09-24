@@ -34,7 +34,7 @@ img {
 
 .close {
   height: 16px;
-  margin: 1em;
+  padding: 1em;
 }
 
 hr {
@@ -47,6 +47,8 @@ hr {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .tab:hover {
@@ -54,12 +56,12 @@ hr {
 }
 
 .tabtext {
-  width: calc(100% - 4em - 34px);
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
   padding-top: 1em;
   padding-bottom: 1em;
+  flex-grow: 1;
 }
 
 .children {
